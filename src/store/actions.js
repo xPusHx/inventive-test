@@ -26,12 +26,14 @@ const actions = {
 
     deleteProduct({commit}, productId) {
         return new Promise(resolve => {
+            //Тут идет запрос к серверу
             commit('deleteProduct', productId);
             resolve();
         });
     },
     resetProducts({state, commit}) {
         return new Promise(resolve => {
+            //Тут идет запрос к серверу
             commit('resetProducts');
             resolve(state.products);
         });
@@ -39,12 +41,14 @@ const actions = {
 
     addToWishlist({commit}, productId) {
         return new Promise(resolve => {
+            //Тут идет запрос к серверу
             commit('addToWishlist', productId);
             resolve();
         });
     },
     removeFromWishlist({commit}, productId) {
         return new Promise(resolve => {
+            //Тут идет запрос к серверу
             commit('removeFromWishlist', productId);
             resolve();
         });
