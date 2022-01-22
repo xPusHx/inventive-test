@@ -9,7 +9,7 @@ const mutations = {
         });
 
         deletedProduct.deleted = true;
-        deletedProduct.wishlisted = true;
+        deletedProduct.wishlisted = false;
     },
     resetProducts(state) {
         state.products.forEach(product => {
