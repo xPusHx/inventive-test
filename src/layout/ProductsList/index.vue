@@ -24,7 +24,7 @@
                         <b-dropdown :text="`Сортировка${currentSortTitle ? `: ${currentSortTitle}` : ''}`">
                             <b-dropdown-item
                                 :active="!currentSortName"
-                                @click="sortBy({})">
+                                @click="sortBy">
                                 Без сортировки
                             </b-dropdown-item>
                             <b-dropdown-item
@@ -49,14 +49,16 @@
                     <div class="loading" v-if="loading">Загрузка…</div>
 
                     <div v-if="isEmpty">Список пуст</div>
-                    <div class="products__item" v-for="product in filteredProducts" :key="product.id" v-else>
-                        <AppProductsItem
-                            :id="product.id"
-                            :image="product.image"
-                            :title="product.title"
-                            :price="product.price"
-                            :wishlisted="product.wishlisted"/>
-                    </div>
+                    <template v-else>
+                        <div class="products__item" v-for="product in filteredProducts" :key="product.id">
+                            <AppProductsItem
+                                :id="product.id"
+                                :image="product.image"
+                                :title="product.title"
+                                :price="product.price"
+                                :wishlisted="product.wishlisted"/>
+                        </div>
+                    </template>
                 </template>
             </div>
         </div>
@@ -261,24 +263,9 @@ export default {
         },
 
         sortBy(sort) {
-            if (this.$router.currentRoute.query.sort !== sort.name) {
-                this.currentSort = sort;
+            const currentSort = sort || {};
 
-                if (this.currentSort.name) {
-                    this.$router.push({
-                        name: this.$router.currentRoute.name,
-                        query: {
-                            sort: this.currentSort.name
-                        }
-                    });
-                } else {
-                    this.$router.push({
-                        name: this.$router.currentRoute.name
-                    });
-                }
-            }
-
-            const currentSortProp = sort.property || 'id';
+            const currentSortProp = currentSort.property || 'id';
             this.shownProducts.sort((first, second) => {
                 const firstProp = first[currentSortProp];
                 const secondProp = second[currentSortProp];
@@ -294,8 +281,25 @@ export default {
                 return 0;
             });
 
-            if (!this.currentSort.name || this.currentSort.isAscending) {
+            if (!currentSort.name || currentSort.isAscending) {
                 this.shownProducts.reverse();
+            }
+
+            if (this.$router.currentRoute.query.sort !== currentSort.name) {
+                this.currentSort = currentSort;
+
+                if (currentSort.name) {
+                    this.$router.push({
+                        name: this.$router.currentRoute.name,
+                        query: {
+                            sort: currentSort.name
+                        }
+                    });
+                } else {
+                    this.$router.push({
+                        name: this.$router.currentRoute.name
+                    });
+                }
             }
         }
     }
