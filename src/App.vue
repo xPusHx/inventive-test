@@ -1,28 +1,55 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <div id="app">
+        <AppPageWrapper>
+            <router-view/>
+        </AppPageWrapper>
+    </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import AppPageWrapper from '@/layout/PageWrapper';
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+    name: 'App',
+
+    components: {
+        AppPageWrapper
+    }
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+}
+html,
+body{
+    min-height: 100vh;
+}
+body{
+    margin: 0;
+}
+
+#app{
+    width: 100%;
+    min-height: 100vh;
+}
+
+.container{
+    width: 100%;
+    max-width: 1366px;
+    padding: 0 20px;
+}
+
+.disabled{
+    pointer-events: none;
+    cursor: default;
+    opacity: .65;
+}
+.loading{
+    min-width: 100%;
+    text-align: center;
 }
 </style>

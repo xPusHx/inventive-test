@@ -1,0 +1,77 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "iPhone 13 Pro",
+      "image": "https://via.placeholder.com/276/333/808080?text=iPhone 13 Pro",
+      "price": 10000,
+      "brand": "Apple",
+      "wishlisted": false,
+      "deleted": false
+    },
+    {
+      "id": 2,
+      "title": "iPhone 13",
+      "image": "https://via.placeholder.com/276/333/808080?text=iPhone 13",
+      "price": 20000,
+      "brand": "Apple",
+      "wishlisted": false,
+      "deleted": false
+    },
+    {
+      "id": 3,
+      "title": "iPhone 12",
+      "image": "https://via.placeholder.com/276/333/808080?text=iPhone 12",
+      "price": 30000,
+      "brand": "Apple",
+      "wishlisted": false,
+      "deleted": false
+    },
+    {
+      "id": 4,
+      "title": "iPhone SE",
+      "image": "https://via.placeholder.com/276/333/808080?text=iPhone SE",
+      "price": 25000,
+      "brand": "Apple",
+      "wishlisted": false,
+      "deleted": false
+    },
+
+    {
+      "id": 5,
+      "title": "Galaxy Note",
+      "image": "https://via.placeholder.com/276/333/808080?text=Samsung Galaxy Note",
+      "price": 20000,
+      "brand": "Samsung",
+      "wishlisted": false,
+      "deleted": false
+    },
+    {
+      "id": 6,
+      "title": "Galaxy A",
+      "image": "https://via.placeholder.com/276/333/808080?text=Samsung Galaxy A",
+      "price": 9000,
+      "brand": "Samsung",
+      "wishlisted": false,
+      "deleted": false
+    },
+    {
+      "id": 7,
+      "title": "Galaxy S",
+      "image": "https://via.placeholder.com/276/333/808080?text=Samsung Galaxy S",
+      "price": 12000,
+      "brand": "Samsung",
+      "wishlisted": false,
+      "deleted": false
+    },
+    {
+      "id": 8,
+      "title": "Galaxy Z",
+      "image": "https://via.placeholder.com/276/333/808080?text=Samsung Galaxy Z",
+      "price": 22000,
+      "brand": "Samsung",
+      "wishlisted": false,
+      "deleted": false
+    }
+  ]
+}
