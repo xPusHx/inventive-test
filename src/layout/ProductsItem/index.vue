@@ -1,5 +1,5 @@
 <template>
-    <div class="product-item">
+    <b-card class="product-item">
         <div class="product-item__inner">
             <picture class="product-item__picture">
                 <img class="product-item__image" :src="image" :alt="title">
@@ -12,7 +12,7 @@
                 <b-button :variant="wishlisted ? 'success' : 'primary'" @click="toggleWishlist">{{wishlisted ? 'В избранном' : 'В избранное'}}</b-button>
             </div>
         </div>
-    </div>
+    </b-card>
 </template>
 
 <script>
@@ -86,16 +86,9 @@ export default {
 .product-item{
     width: 100%;
     height: 100%;
-    box-shadow: 0 4px 6px 0 rgb(22 52 87 / 10%);
-    padding: 20px 15px 25px;
-}
-@media (min-width: 992px){
-    .product-item{
-        padding: 25px 22px 30px;
-    }
 }
 .product-item:hover{
-    box-shadow: 0 4px 6px 0 rgb(22 52 87 / 15%);
+    box-shadow: 0 4px 6px 0 rgb(22 52 87 / 5%);
 }
 .product-item__inner{
     position: relative;
@@ -124,6 +117,7 @@ export default {
 .product-item__title{
     font-weight: bold;
     margin-top: 15px;
+    font-size: 1.1rem;
 }
 .product-item__price{
     min-width: 100%;
