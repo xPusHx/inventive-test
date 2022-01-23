@@ -63,73 +63,71 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 .header{
     display: flex;
     justify-content: center;
     background: #555;
     color: #fff;
     padding: 5px 0;
-}
-@media (min-width: 768px){
-    .header{
+    @media (min-width: 768px){
         padding: 15px 0;
     }
-}
-.header .row{
-    align-items: center;
-}
-.header-menu__list{
-    display: flex;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-.header-menu__item:not(:first-child){
-    margin-left: 20px;
-}
-@media (min-width: 768px){
-    .header-menu__item:not(:first-child){
-        margin-left: 30px;
+    .row{
+        align-items: center;
     }
-}
-@media (min-width: 992px){
-    .header-menu__item:not(:first-child){
-        margin-left: 40px;
+    &-menu{
+        &__list{
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        &__item:not(:first-child){
+            margin-left: 20px;
+            @media (min-width: 768px){
+                margin-left: 30px;
+            }
+            @media (min-width: 992px){
+                margin-left: 40px;
+            }
+        }
+        &__link{
+            color: #fff !important;
+            text-decoration: underline;
+            &:hover,
+            &:focus{
+                opacity: .7;
+                text-decoration: none;
+            }
+            &.active{
+                opacity: 1 !important;
+                text-decoration: none;
+                cursor: default;
+            }
+        }
     }
-}
-.header-menu__link{
-    color: #fff !important;
-    text-decoration: underline;
-}
-.header-menu__link:hover,
-.header-menu__link:focus{
-    opacity: .7;
-    text-decoration: none;
-}
-.header-menu__link.active{
-    opacity: 1 !important;
-    text-decoration: none;
-    cursor: default;
-}
 
-.header-wishlist__link{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    position: relative;
-    color: #fff !important;
-    text-decoration: none !important;
-}
-.header-wishlist__link:hover,
-.header-wishlist__link:focus{
-    opacity: .7;
-}
-.header-wishlist__badge{
-    position: absolute;
-    top: 0;
-    right: 0;
+    &-wishlist{
+        &__link{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            position: relative;
+            color: #fff !important;
+            text-decoration: none !important;
+            &:hover,
+            &:focus{
+                opacity: .7;
+            }
+        }
+        &__badge{
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+    }
 }
 </style>

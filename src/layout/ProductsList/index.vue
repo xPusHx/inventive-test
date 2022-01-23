@@ -306,41 +306,35 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 .products{
     padding: 2rem 0 3.5rem;
-}
-.products__filter{
-    margin-bottom: 2rem;
-}
-.products__list{
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: -12px;
-    margin-left: -8px;
-    margin-right: -8px;
-}
-.products__item{
-    min-width: 100%;
-    margin-top: 12px;
-    padding: 0 8px;
-}
-@media (min-width: 576px){
-    .products__item{
-        min-width: 50%;
-        max-width: 50%;
+    &__filter{
+        margin-bottom: 2rem;
     }
-}
-@media (min-width: 768px){
-    .products__item{
-        min-width: 33.3333%;
-        max-width: 33.3333%;
+    &__list{
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: -12px;
+        margin-left: -8px;
+        margin-right: -8px;
     }
-}
-@media (min-width: 992px){
-    .products__item{
-        min-width: 25%;
-        max-width: 25%;
+    &__item{
+        min-width: 100%;
+        margin-top: 12px;
+        padding: 0 8px;
+        @media (min-width: 576px){
+            min-width: 50%;
+            max-width: 50%;
+        }
+        @media (min-width: 768px){
+            min-width: 33.3333%;
+            max-width: 33.3333%;
+        }
+        @media (min-width: 992px){
+            min-width: 25%;
+            max-width: 25%;
+        }
     }
 }
 </style>

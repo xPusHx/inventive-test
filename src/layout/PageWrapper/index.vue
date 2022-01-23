@@ -22,7 +22,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 .page-wrapper{
     display: flex;
     min-height: 100vh;

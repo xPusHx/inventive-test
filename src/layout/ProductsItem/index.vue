@@ -82,54 +82,52 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 .product-item{
     width: 100%;
     height: 100%;
-}
-.product-item:hover{
-    box-shadow: 0 4px 6px 0 rgb(22 52 87 / 5%);
-}
-.product-item__inner{
-    position: relative;
-    padding-bottom: 88px; /*70px + 18*/
-}
-.product-item__picture{
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    height: 250px;
-}
-@media (min-width: 992px){
-    .product-item__picture{
-        padding-bottom: 100%;
+    &:hover{
+        box-shadow: 0 4px 6px 0 rgb(22 52 87 / 5%);
     }
-}
-.product-item__image{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    max-width: 100%;
-}
-.product-item__title{
-    font-weight: bold;
-    margin-top: 15px;
-    font-size: 1.1rem;
-}
-.product-item__price{
-    min-width: 100%;
-    margin-bottom: 8px;
-}
-.product-item__bottom{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    &__inner{
+        position: relative;
+        padding-bottom: 88px; /*70px + 18*/
+    }
+    &__picture{
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        height: 250px;
+        @media (min-width: 992px){
+            padding-bottom: 100%;
+        }
+    }
+    &__image{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 100%;
+    }
+    &__title{
+        font-weight: bold;
+        margin-top: 15px;
+        font-size: 1.1rem;
+    }
+    &__price{
+        min-width: 100%;
+        margin-bottom: 8px;
+    }
+    &__bottom{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
 }
 </style>
