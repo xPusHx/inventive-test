@@ -10,7 +10,7 @@
                             exact
                             custom>
                             <li class="header-menu__item">
-                                <a class="header-menu__link" :class="{active: (isActive || $router.currentRoute.name === 'brand' || $router.currentRoute.query.sort)}" :href="href" @click="navigate">
+                                <a class="header-menu__link" :class="{active: (isActive || $route.name === 'brand' || $route.query.sort)}" :href="href" @click="navigate">
                                     <span class="header-menu__text">{{route.meta.title}}</span>
                                 </a>
                             </li>

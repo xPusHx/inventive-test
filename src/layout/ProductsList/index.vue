@@ -194,7 +194,7 @@ export default {
 
     watch: {
         brands() {
-            const currentRoute = this.$router.currentRoute;
+            const currentRoute = this.$route;
             if (currentRoute.params.brand) {
                 this.currentBrand = this.brands.find(brand => {
                     return brand.toLowerCase() === currentRoute.params.brand;
@@ -206,7 +206,7 @@ export default {
     created() {
         this.fetchProducts();
 
-        const currentRoute = this.$router.currentRoute;
+        const currentRoute = this.$route;
         if (currentRoute.query.sort) {
             this.currentSort = this.sortTypes.find(sortType => {
                 return sortType.name === currentRoute.query.sort;
@@ -238,7 +238,7 @@ export default {
         },
 
         filterByBrand(brand) {
-            if (brand && this.$router.currentRoute.params.brand === brand.toLowerCase()) return;
+            if (brand && this.$route.params.brand === brand.toLowerCase()) return;
 
             this.currentBrand = brand;
 
@@ -285,19 +285,19 @@ export default {
                 this.shownProducts.reverse();
             }
 
-            if (this.$router.currentRoute.query.sort !== currentSort.name) {
+            if (this.$route.query.sort !== currentSort.name) {
                 this.currentSort = currentSort;
 
                 if (currentSort.name) {
                     this.$router.push({
-                        name: this.$router.currentRoute.name,
+                        name: this.$route.name,
                         query: {
                             sort: currentSort.name
                         }
                     });
                 } else {
                     this.$router.push({
-                        name: this.$router.currentRoute.name
+                        name: this.$route.name
                     });
                 }
             }
