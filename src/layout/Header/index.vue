@@ -7,10 +7,10 @@
                         <router-link
                             to="/"
                             v-slot="{href, route, navigate, isActive}"
-                            exact
+                            exact-path
                             custom>
                             <li class="header-menu__item">
-                                <a class="header-menu__link" :class="{active: (isActive || $route.name === 'brand' || $route.query.sort)}" :href="href" @click="navigate">
+                                <a class="header-menu__link" :class="{active: (isActive || $route.name === 'brand')}" :href="href" @click="navigate">
                                     <span class="header-menu__text">{{route.meta.title}}</span>
                                 </a>
                             </li>
