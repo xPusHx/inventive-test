@@ -32,7 +32,7 @@
                 <div class="header__wishlist col-auto">
                     <router-link
                         to="/wishlist"
-                        v-slot="{href, route, navigate}"
+                        v-slot="{href, navigate}"
                         custom>
                         <a class="header-wishlist__link" title="Избранное" :href="href" @click="navigate">
                             <b-icon icon="star-fill"></b-icon>
