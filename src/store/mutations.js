@@ -7,6 +7,7 @@ const mutations = {
         const deletedProduct = state.products.find(product => {
             return product.id === productId;
         });
+        if (!deletedProduct) return;
 
         deletedProduct.deleted = true;
         deletedProduct.wishlisted = false;
@@ -21,6 +22,7 @@ const mutations = {
         const wishlistedProduct = state.products.find(product => {
             return product.id === productId;
         });
+        if (!wishlistedProduct) return;
 
         wishlistedProduct.wishlisted = true;
     },
@@ -28,6 +30,7 @@ const mutations = {
         const removedProduct = state.products.find(product => {
             return product.id === productId;
         });
+        if (!removedProduct) return;
 
         removedProduct.wishlisted = false;
     }
