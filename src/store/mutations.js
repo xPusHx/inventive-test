@@ -33,6 +33,11 @@ const mutations = {
         if (!removedProduct) return;
 
         removedProduct.wishlisted = false;
+    },
+    clearWishlist(state) {
+        state.products.forEach(product => {
+            product.wishlisted = false;
+        });
     }
 };
 

@@ -52,6 +52,13 @@ const actions = {
             commit('removeFromWishlist', productId);
             resolve();
         });
+    },
+    clearWishlist({commit}) {
+        return new Promise(resolve => {
+            //Тут идет запрос к серверу
+            commit('clearWishlist');
+            resolve();
+        });
     }
 };
 

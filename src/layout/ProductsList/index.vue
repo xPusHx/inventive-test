@@ -1,44 +1,50 @@
 <template>
     <div class="products" :class="{disabled: loading}">
         <div class="products__wrapper">
-            <div class="products__filter" v-if="showFilter">
+            <div class="products__filter" v-if="showTopBlock">
                 <div class="row">
-                    <div class="col-auto">
-                        <b-dropdown :text="`Бренд${currentBrand ? `: ${currentBrand}` : ''}`">
-                            <b-dropdown-item
-                                :active="!currentBrand"
-                                @click="filterByBrand()">
-                                Все бренды
-                            </b-dropdown-item>
-                            <b-dropdown-item
-                                v-for="brand in brands"
-                                :key="brand"
-                                :active="brand === currentBrand"
-                                @click="filterByBrand(brand)">
-                                {{brand}}
-                            </b-dropdown-item>
-                        </b-dropdown>
-                    </div>
+                    <template v-if="showFilter">
+                        <div class="col-auto">
+                            <b-dropdown :text="`Бренд${currentBrand ? `: ${currentBrand}` : ''}`">
+                                <b-dropdown-item
+                                    :active="!currentBrand"
+                                    @click="filterByBrand()">
+                                    Все бренды
+                                </b-dropdown-item>
+                                <b-dropdown-item
+                                    v-for="brand in brands"
+                                    :key="brand"
+                                    :active="brand === currentBrand"
+                                    @click="filterByBrand(brand)">
+                                    {{brand}}
+                                </b-dropdown-item>
+                            </b-dropdown>
+                        </div>
 
-                    <div class="col-auto">
-                        <b-dropdown :text="`Сортировка${currentSortTitle ? `: ${currentSortTitle}` : ''}`">
-                            <b-dropdown-item
-                                :active="!currentSortName"
-                                @click="sortBy">
-                                Без сортировки
-                            </b-dropdown-item>
-                            <b-dropdown-item
-                                v-for="sort in sortTypes"
-                                :key="sort.name"
-                                :active="sort.name === currentSortName"
-                                @click="sortBy(sort)">
-                                {{sort.title}}
-                            </b-dropdown-item>
-                        </b-dropdown>
-                    </div>
+                        <div class="col-auto">
+                            <b-dropdown :text="`Сортировка${currentSortTitle ? `: ${currentSortTitle}` : ''}`">
+                                <b-dropdown-item
+                                    :active="!currentSortName"
+                                    @click="sortBy">
+                                    Без сортировки
+                                </b-dropdown-item>
+                                <b-dropdown-item
+                                    v-for="sort in sortTypes"
+                                    :key="sort.name"
+                                    :active="sort.name === currentSortName"
+                                    @click="sortBy(sort)">
+                                    {{sort.title}}
+                                </b-dropdown-item>
+                            </b-dropdown>
+                        </div>
+                    </template>
 
                     <div class="col-auto ml-auto" v-if="showResetButton">
                         <b-button class="products__reset" variant="primary" @click="resetDeleted">Вернуть удалённые</b-button>
+                    </div>
+
+                    <div class="col-auto ml-auto" v-else-if="showClearWishlistButton">
+                        <b-button class="products__reset" variant="danger" @click="clearWishlist">Очистить избранное</b-button>
                     </div>
                 </div>
             </div>
@@ -126,7 +132,8 @@ export default {
 
     computed: {
         ...mapGetters([
-            'hasDeleted'
+            'hasDeleted',
+            'wishlistCount'
         ]),
 
         showFilter() {
@@ -134,11 +141,21 @@ export default {
         },
 
         showResetButton() {
-            return this.hasDeleted;
+            return this.hasDeleted && !this.wishlist;
+        },
+
+        showClearWishlistButton() {
+            return this.wishlist && (this.wishlistCount > 0);
+        },
+
+        showTopBlock() {
+            return this.showFilter || this.showClearWishlistButton;
         },
 
         shownProducts() {
-            if (!this.products) return [];
+            if (this.products.length === 0) {
+                return [];
+            }
 
             //Проверка на удалённость
             const shownProducts = this.products.filter(product => {
@@ -216,13 +233,15 @@ export default {
 
     methods: {
         ...mapActions({
+            clearWishlistAction: 'clearWishlist',
             fetchProductsAction: 'fetchProducts',
             resetProductsAction: 'resetProducts'
         }),
 
         fetchProducts(isReset) {
             this.loading = true;
-            this[isReset ? 'resetProductsAction' : 'fetchProductsAction']()
+            const fetchAction = isReset ? this.resetProductsAction : this.fetchProductsAction;
+            fetchAction()
                 .then(products => {
                     this.products = products;
                     this.loading = false;
@@ -235,6 +254,10 @@ export default {
 
         resetDeleted() {
             this.fetchProducts(true);
+        },
+
+        clearWishlist() {
+            this.clearWishlistAction();
         },
 
         filterByBrand(brand) {
