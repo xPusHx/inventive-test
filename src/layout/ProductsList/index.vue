@@ -51,6 +51,7 @@
 
             <div class="products__list">
                 <div class="error text-danger" v-if="getProductsError">Произошла ошибка</div>
+
                 <template v-else>
                     <div class="loading" v-if="loading">Загрузка…</div>
 
@@ -341,6 +342,9 @@ export default {
         margin-top: -12px;
         margin-left: -8px;
         margin-right: -8px;
+        .error{
+            padding: 0 8px;
+        }
     }
     &__item{
         min-width: 100%;
