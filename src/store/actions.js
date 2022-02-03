@@ -10,7 +10,7 @@ const actions = {
             }
 
             //Или берём с сервера
-            return fetch(mockJson)
+            fetch(mockJson)
                 .then(response => response.json())
                 .then(data => {
                     const {products} = data;
