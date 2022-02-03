@@ -141,7 +141,7 @@ export default {
         },
 
         showResetButton() {
-            return this.hasDeleted && !this.wishlist;
+            return !this.showFilter && this.hasDeleted;
         },
 
         showClearWishlistButton() {
