@@ -1,64 +1,44 @@
 const mockJson = 'https://api.npoint.io/e8940572b59f7dfc63c4';
 
 const actions = {
-    fetchProducts({state, commit}) {
-        return new Promise((resolve, reject) => {
-            //Берём из стора
-            if (state.products.length > 0) {
-                resolve(state.products);
-                return;
-            }
+    async fetchProducts({state, commit}) {
+        //Берём из стора
+        if (state.products.length > 0) {
+            return state.products;
+        }
 
-            //Или берём с сервера
-            fetch(mockJson)
-                .then(response => response.json())
-                .then(data => {
-                    const {products} = data;
-                    commit('setProductsToState', products);
-                    resolve(products);
-                })
-                .catch(error => {
-                    console.log(error);
-                    reject(error);
-                });
+        //Или берём с сервера
+        const response = await fetch(mockJson);
+        const data = await response.json().catch(error => {
+            throw error;
         });
+
+        const {products} = data;
+        commit('setProductsToState', products);
+        return products;
     },
 
-    deleteProduct({commit}, productId) {
-        return new Promise(resolve => {
-            //Тут идет запрос к серверу
-            commit('deleteProduct', productId);
-            resolve();
-        });
+    async deleteProduct({commit}, productId) {
+        //Тут идет запрос к серверу
+        commit('deleteProduct', productId);
     },
-    resetProducts({state, commit}) {
-        return new Promise(resolve => {
-            //Тут идет запрос к серверу
-            commit('resetProducts');
-            resolve(state.products);
-        });
+    async resetProducts({state, commit}) {
+        //Тут идет запрос к серверу
+        commit('resetProducts');
+        return state.products;
     },
 
-    addToWishlist({commit}, productId) {
-        return new Promise(resolve => {
-            //Тут идет запрос к серверу
-            commit('addToWishlist', productId);
-            resolve();
-        });
+    async addToWishlist({commit}, productId) {
+        //Тут идет запрос к серверу
+        commit('addToWishlist', productId);
     },
-    removeFromWishlist({commit}, productId) {
-        return new Promise(resolve => {
-            //Тут идет запрос к серверу
-            commit('removeFromWishlist', productId);
-            resolve();
-        });
+    async removeFromWishlist({commit}, productId) {
+        //Тут идет запрос к серверу
+        commit('removeFromWishlist', productId);
     },
-    clearWishlist({commit}) {
-        return new Promise(resolve => {
-            //Тут идет запрос к серверу
-            commit('clearWishlist');
-            resolve();
-        });
+    async clearWishlist({commit}) {
+        //Тут идет запрос к серверу
+        commit('clearWishlist');
     }
 };
 
