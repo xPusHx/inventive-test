@@ -10,7 +10,11 @@
                             exact-path
                             custom>
                             <li class="header-menu__item">
-                                <a class="header-menu__link" :class="{active: (isActive || $route.name === 'brand')}" :href="href" @click="navigate">
+                                <a
+                                    class="header-menu__link"
+                                    :class="{active: (isActive || $route.name === 'brand')}"
+                                    :href="href"
+                                    @click="navigate">
                                     <span class="header-menu__text">{{route.meta.title}}</span>
                                 </a>
                             </li>
@@ -21,7 +25,11 @@
                             v-slot="{href, route, navigate, isActive}"
                             custom>
                             <li class="header-menu__item">
-                                <a class="header-menu__link" :class="{active : isActive}" :href="href" @click="navigate">
+                                <a
+                                    class="header-menu__link"
+                                    :class="{active : isActive}"
+                                    :href="href"
+                                    @click="navigate">
                                     <span class="header-menu__text">{{route.meta.title}}</span>
                                 </a>
                             </li>
@@ -34,7 +42,11 @@
                         to="/wishlist"
                         v-slot="{href, navigate}"
                         custom>
-                        <a class="header-wishlist__link" title="Избранное" :href="href" @click="navigate">
+                        <a
+                            class="header-wishlist__link"
+                            title="Избранное"
+                            :href="href"
+                            @click="navigate">
                             <b-icon icon="star-fill"></b-icon>
                             <b-badge class="header-wishlist__badge" variant="light" v-show="showWishlistCount">{{wishlistCount}}</b-badge>
                         </a>
