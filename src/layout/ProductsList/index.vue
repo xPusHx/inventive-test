@@ -50,12 +50,12 @@
             </div>
 
             <div class="products__list">
-                <div class="error text-danger" v-if="getProductsError">Произошла ошибка</div>
+                <div class="col error text-danger" v-if="getProductsError">Произошла ошибка</div>
 
                 <template v-else>
-                    <div class="loading" v-if="loading">Загрузка…</div>
+                    <div class="col loading" v-if="loading">Загрузка…</div>
 
-                    <div v-if="isEmpty">Список пуст</div>
+                    <div class="col" v-if="isEmpty">Список пуст</div>
                     <template v-else>
                         <div class="products__item" v-for="product in filteredProducts" :key="product.id">
                             <AppProductsItem
@@ -342,7 +342,7 @@ export default {
         margin-top: -12px;
         margin-left: -8px;
         margin-right: -8px;
-        .error{
+        .col{
             padding: 0 8px;
         }
     }
