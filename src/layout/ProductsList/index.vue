@@ -127,7 +127,6 @@ export default {
 
             sortTypes,
             currentSort: {},
-            ascendingSort: false,
 
             currentBrand: ''
         };
