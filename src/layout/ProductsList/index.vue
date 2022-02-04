@@ -142,7 +142,7 @@ export default {
         },
 
         showResetButton() {
-            return !this.showFilter && this.hasDeleted;
+            return this.showFilter && this.hasDeleted;
         },
 
         showClearWishlistButton() {
