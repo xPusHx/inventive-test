@@ -218,6 +218,10 @@ export default {
                 this.currentBrand = this.brands.find(brand => {
                     return brand.toLowerCase() === currentRoute.params.brand;
                 }) || '';
+
+                if (this.currentBrand) {
+                    document.title = `${currentRoute.meta.title} — ${this.currentBrand}`;
+                }
             }
         }
     },

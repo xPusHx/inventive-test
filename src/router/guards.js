@@ -1,6 +1,7 @@
 const initRouterGuards = router => {
     router.beforeEach((routeTo, routeFrom, next) => {
-        return next();
+        document.title = routeTo.meta.title;
+        next();
     });
 };
 
