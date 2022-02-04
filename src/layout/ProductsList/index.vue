@@ -77,6 +77,33 @@ import {mapActions, mapGetters} from 'vuex';
 
 import AppProductsItem from '@/layout/ProductsItem';
 
+const sortTypes = [
+    {
+        name: 'name-asc',
+        title: 'по названию (по возрастанию)',
+        property: 'title',
+        isAscending: true
+    },
+    {
+        name: 'name-desc',
+        title: 'по названию (по убыванию)',
+        property: 'title',
+        isAscending: false
+    },
+    {
+        name: 'price-asc',
+        title: 'по цене (по возрастанию)',
+        property: 'price',
+        isAscending: true
+    },
+    {
+        name: 'price-desc',
+        title: 'по цене (по убыванию)',
+        property: 'price',
+        isAscending: false
+    }
+];
+
 export default {
     name: 'AppProductsList',
 
@@ -98,32 +125,7 @@ export default {
 
             products: [],
 
-            sortTypes: [
-                {
-                    name: 'name-asc',
-                    title: 'по названию (по возрастанию)',
-                    property: 'title',
-                    isAscending: true
-                },
-                {
-                    name: 'name-desc',
-                    title: 'по названию (по убыванию)',
-                    property: 'title',
-                    isAscending: false
-                },
-                {
-                    name: 'price-asc',
-                    title: 'по цене (по возрастанию)',
-                    property: 'price',
-                    isAscending: true
-                },
-                {
-                    name: 'price-desc',
-                    title: 'по цене (по убыванию)',
-                    property: 'price',
-                    isAscending: false
-                }
-            ],
+            sortTypes,
             currentSort: {},
             ascendingSort: false,
 
