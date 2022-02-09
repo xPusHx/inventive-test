@@ -54,7 +54,7 @@
                 <div class="loading" v-if="loading">Загрузка…</div>
 
                 <transition-group tag="div" class="products__list" name="fade">
-                    <div class="col" v-if="isEmpty" :key="'empty'" style="position: absolute">Список пуст</div>
+                    <div class="products__empty" v-if="isEmpty" :key="'empty'">Список пуст</div>
                     <template v-else>
                         <div class="products__item" v-for="product in filteredProducts" :key="product.id">
                             <AppProductsItem
@@ -338,7 +338,10 @@ export default {
 <style lang="scss">
 .fade-enter-active,
 .fade-leave-active{
-    transition: opacity .5s;
+    transition: opacity .4s;
+}
+.fade-leave-active{
+    position: absolute;
 }
 .fade-enter,
 .fade-leave-to{
@@ -351,6 +354,7 @@ export default {
         margin-bottom: 2rem;
     }
     &__list{
+        position: relative;
         display: flex;
         flex-wrap: wrap;
         margin-top: -12px;
@@ -359,6 +363,10 @@ export default {
         .col{
             padding: 0 8px;
         }
+    }
+    &__empty{
+        position: absolute;
+        padding: 0 8px;
     }
     &__item{
         min-width: 100%;
