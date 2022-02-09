@@ -49,13 +49,12 @@
                 </div>
             </div>
 
-            <div class="products__list">
-                <div class="col error text-danger" v-if="getProductsError">Произошла ошибка</div>
+            <div class="error text-danger" v-if="getProductsError">Произошла ошибка</div>
+            <template v-else>
+                <div class="loading" v-if="loading">Загрузка…</div>
 
-                <template v-else>
-                    <div class="col loading" v-if="loading">Загрузка…</div>
-
-                    <div class="col" v-if="isEmpty">Список пуст</div>
+                <transition-group tag="div" class="products__list" name="fade">
+                    <div class="col" v-if="isEmpty" :key="'empty'" style="position: absolute">Список пуст</div>
                     <template v-else>
                         <div class="products__item" v-for="product in filteredProducts" :key="product.id">
                             <AppProductsItem
@@ -63,11 +62,12 @@
                                 :image="product.image"
                                 :title="product.title"
                                 :price="product.price"
-                                :wishlisted="product.wishlisted"/>
+                                :wishlisted="product.wishlisted"
+                                :key="product.id"/>
                         </div>
                     </template>
-                </template>
-            </div>
+                </transition-group>
+            </template>
         </div>
     </div>
 </template>
@@ -336,6 +336,15 @@ export default {
 </script>
 
 <style lang="scss">
+.fade-enter-active,
+.fade-leave-active{
+    transition: opacity .5s;
+}
+.fade-enter,
+.fade-leave-to{
+    opacity: 0;
+}
+
 .products{
     padding: 2rem 0 3.5rem;
     &__filter{
