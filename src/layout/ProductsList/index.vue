@@ -336,18 +336,6 @@ export default {
 </script>
 
 <style lang="scss">
-.fade-enter-active,
-.fade-leave-active{
-    transition: opacity .4s;
-}
-.fade-leave-active{
-    position: absolute;
-}
-.fade-enter,
-.fade-leave-to{
-    opacity: 0;
-}
-
 .products{
     padding: 2rem 0 3.5rem;
     &__filter{

@@ -48,7 +48,9 @@
                             :href="href"
                             @click="navigate">
                             <b-icon icon="star-fill"></b-icon>
-                            <b-badge class="header-wishlist__badge" variant="light" v-show="showWishlistCount">{{wishlistCount}}</b-badge>
+                            <transition name="fade">
+                                <b-badge class="header-wishlist__badge" variant="light" v-show="showWishlistCount">{{wishlistCount}}</b-badge>
+                            </transition>
                         </a>
                     </router-link>
                 </div>

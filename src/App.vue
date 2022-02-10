@@ -51,4 +51,17 @@ body{
     min-width: 100%;
     text-align: center;
 }
+
+//Transitions
+.fade-enter-active,
+.fade-leave-active{
+    transition: opacity .4s;
+}
+.fade-leave-active{
+    position: absolute;
+}
+.fade-enter,
+.fade-leave-to{
+    opacity: 0;
+}
 </style>
